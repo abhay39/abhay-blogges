@@ -3,11 +3,11 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const ThemeProviders = ({children}) => {
-    const theme=useSelector((store)=>store)
+    const theme=useSelector((store)=>store.themeChanger)
 
 
   return (
-    <div className={theme.themeChanger}>
+    <div className={theme}>
         {children}
     </div>
   )

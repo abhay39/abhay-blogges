@@ -25,9 +25,36 @@
 }
 
 @media screen and (max-width:1280px){
-.logo{
-    font-size: 1.9rem;
+    .logo{
+        font-size: 1.9rem;
+    }
+    .links{
+        font-size: 1rem;
+        gap: 0.9rem;
+    }
 }
+
+@media screen and (max-width:1024px){
+    .social{
+        display: none;
+    }
+    .logo{
+        text-align: left;
+    }
+}
+
+@media screen and (max-width:768px){
+    .logo{
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width:640px){
+    .link{
+        display: none;
+    }
+    .links{
+        justify-content: flex-end;
+    }
 }
   
   

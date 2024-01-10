@@ -11,7 +11,7 @@ const ThemeToogle = () => {
   const dispatch=useDispatch();
   const theme=useSelector((store)=>store.themeChanger)
 
-  let mode=theme.themeChanger;
+  // console.log(theme)
 
 
   const changeThe=()=>{
@@ -19,14 +19,10 @@ const ThemeToogle = () => {
   }
 
   return (
-    <div style={
-      mode==='dark' ?({backgroundColor:'white'}):({backgroundColor:'#0f172a'})
-    } className={styles.containers}>
-      <IoIosMoon  size={18} color='yellow'/>
-      <div className={styles.ball} style={
-        mode==='dark' ?({left:1,backgroundColor:'#0f172a'}):({right:1,backgroundColor:'white'})
-      }></div>
-      <IoSunnyOutline onClick={changeThe} size={18} color='yellow'/>
+    <div className={styles.containers} onClick={changeThe}>
+      {
+        theme==='dark' ? (<IoSunnyOutline  size={18} />):(<IoIosMoon  size={18}  />)
+      }
     </div>
   )
 }

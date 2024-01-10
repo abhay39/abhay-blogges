@@ -24,6 +24,12 @@ a{
   --softBg:#1f273a;
   --softTextColor:#a6a6a6;
 }
+.light{
+  --bg:white;
+  --textColor:black;
+  --softBg:#f0f0f0;
+  --softTextColor:#626262;
+}
 .mainContainer{
   min-height: 100vh;
   background-color: var(--bg);
@@ -67,4 +73,11 @@ a{
   .wrapper{
     max-width: 475px;
   }
+}
+
+.ql-container{
+  font-size: 28px !important;
+}
+.quill > .ql-container > .ql-editor.ql-blank:before{
+  color: #b3b3b1;
 }

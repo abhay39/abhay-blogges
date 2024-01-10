@@ -4,6 +4,8 @@ import Navbar from "@/component/navbar/Navbar";
 import Footer from "@/component/footer/Footer";
 import StoreProvider from "@/StoreProvider";
 import ThemeProviders from "@/component/themeToogle/ThemeProviders";
+import AuthProviders from "@/providers/AuthProviders";
+import { Toaster } from "react-hot-toast";
 
 const inter = Poppins({ subsets: ["latin"],weight:['400','500','600'] });
 
@@ -16,17 +18,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <StoreProvider>
-          <ThemeProviders>
-            <div className="mainContainer">
-              <div className="wrapper">
-                <Navbar />
-                {children}
-                <Footer />
+          <AuthProviders>
+          <StoreProvider>
+            <ThemeProviders>
+              <div className="mainContainer">
+              <Toaster position="top-center " />
+                <div className="wrapper">
+                  <Navbar />
+                  {children}
+                  <Footer />
+                </div>
               </div>
-            </div>
-          </ThemeProviders>
-        </StoreProvider>
+            </ThemeProviders>
+          </StoreProvider>
+          </AuthProviders>
       </body>
     </html>
   );
