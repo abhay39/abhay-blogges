@@ -4,16 +4,19 @@ import styles from "./write.module.css";
 import { useState } from "react";
 import { FaCirclePlus, FaRegFileImage, FaVideo } from "react-icons/fa6";
 import { FaExternalLinkSquareAlt } from "react-icons/fa";
-import ReactQuill from "react-quill";
+
 import "react-quill/dist/quill.snow.css";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-hot-toast';
+import dynamic from 'next/dynamic';
 
 
 
 const upload_preset="bloggers";
 const cloud_name= 'dzox9x1uq';
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 const WritePage = () => {
   const userData = useSelector(store => store.userDetails);
