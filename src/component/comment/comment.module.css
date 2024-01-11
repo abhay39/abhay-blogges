@@ -27,10 +27,18 @@
 
 .comments{
     margin-top: 50px;
+    
 }
 
 .comment{
     margin-bottom: 50px;
+    transform: 0.9s ease-in-out;
+    cursor: pointer;
+}
+.comment:hover{
+    background-color: white;
+    box-shadow: 0px 2px 2px 2px orange;
+    padding: 3px;
 }
 .user{
     display: flex;

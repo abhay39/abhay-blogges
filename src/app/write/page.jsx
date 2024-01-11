@@ -55,7 +55,7 @@ const WritePage = () => {
       title: title,
       image: image,
       content: value,
-      author: userData.details._id,
+      author: userData.details.name,
       category:category
     };
     
@@ -105,7 +105,7 @@ const WritePage = () => {
         {
           getCategory[0]?.map((item,index)=>{
             return(
-              <option key={index} value={item._id}>{item.title}</option>
+              <option key={index} value={item.title}>{item.title}</option>
             )
           })
         }

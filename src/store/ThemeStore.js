@@ -2,7 +2,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const ThemeSlice=createSlice({
     name:"Theme",
-    initialState:"dark",
+    initialState:"light",
     reducers:{
         changeTheme:(state,action)=>{
             if(state==="light"){

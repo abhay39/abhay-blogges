@@ -13,31 +13,21 @@ const PostsScheme=new mongoose.Schema({
         required:true
     },
     category:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Category",
+        type:String,
         required:true
     },
     author:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
+        type:String,
         required:true
     },
-    likes:{
-        default:[],
-        type:Array
-    },
-    dislikes:{
-        default:[],
-        type:Array
+    views:{
+        type:Number,
+        default:0
     },
     comments:{
         default:[],
         type:Array
     },
-    share:{
-        default:[],
-        type:Array
-    }
 },{timestamps:true})
 
 

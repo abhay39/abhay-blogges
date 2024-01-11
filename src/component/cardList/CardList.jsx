@@ -9,7 +9,7 @@ import { AllPostsAction } from '@/store/ThemeStore';
 const CardList = ({page}) => {
 
   const dispatch=useDispatch();
-  const totalPosts=useSelector((store)=>store.totalPost);
+  const [totalPosts,setTotalPosts]=useState([])
 
 
   
@@ -21,7 +21,8 @@ const CardList = ({page}) => {
     const getTotalPosts=async()=>{
       let res=await fetch("/api/posts",{signal});
       res= await res.json();
-      dispatch(AllPostsAction.addPosts(res));
+      setTotalPosts(res);
+      
     }
     getTotalPosts();
 
@@ -38,11 +39,11 @@ const CardList = ({page}) => {
       <div className={styles.cards}>
         
         {
-          totalPosts.map((item,index)=>{
+          totalPosts.length>0?(totalPosts.map((item,index)=>{
             return(
               <Card item={item} key={index}/>
             )
-          })
+          })):(<h1>No Blog to show</h1>)
         }
         
       </div>

@@ -3,9 +3,9 @@ import Posts from "../models/Posts";
 import { NextResponse } from "next/server";
 import Category from "../models/Category";
 
-await connectMONGO();
 
 export const GET=async()=>{
+    await connectMONGO();
     const category=await Category.find();
     return NextResponse.json(category,{status:202})
 }
@@ -13,11 +13,12 @@ export const GET=async()=>{
 export const POST=async(req,res)=>{
     const data= await req.json();
     const {title,imageURL}=data;
-
+    
     const category=new Category({
         title:title,
         imageURL:imageURL,
     })
+    await connectMONGO();
     const result=await category.save();
 
     if(result){

@@ -8,7 +8,8 @@ const UserSchema=new mongoose.Schema({
     },
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:[true,'Name is already in use']
     },
     imageURL:{
         type:String,
