@@ -20,6 +20,11 @@ export default function RootLayout({ children }) {
     <>
       <Head>
         <meta name="google-adsense-account" content="ca-pub-2244249864037808" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2244249864037808"
+          crossorigin="anonymous"
+        ></script>
         {/* Add other meta tags, links, etc., as needed */}
       </Head>
 
