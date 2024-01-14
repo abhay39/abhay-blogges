@@ -16,7 +16,7 @@ export default function AboutUs() {
 
           <p>Founded by Abhay Kumar Gupta, our CEO, YOURVIEWS is driven by a passion for knowledge sharing and community building. Abhay Kumar Gupta leads our team with a vision to create a platform that fosters diverse perspectives and encourages open dialogue.</p>
 
-          <p>Whether you're a seasoned contributor or a newcomer, we invite you to join our community and share your insights on the selected categories. Your unique voice contributes to the richness of discussions on Your Website Name.</p>
+          <p>Whether you are a seasoned contributor or a newcomer, we invite you to join our community and share your insights on the selected categories. Your unique voice contributes to the richness of discussions on Your Website Name.</p>
         </div>
 
         <div className=' mt-3 '>

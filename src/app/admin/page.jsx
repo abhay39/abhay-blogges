@@ -9,25 +9,25 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 
-const page = () => {
+const AdminPage = () => {
 
   const {status,data}= useSession();
   const router=useRouter();
 
-  if(data){
-    if(data.role ==='user'){
-      toast.error("As you are user you are not allowed to access this page")
+  if (typeof window !== 'undefined') {
+    if(data){
+      if(data.role ==='user'){
+        toast.error("As you are user you are not allowed to access this page")
+        router.push("/")
+      }
+    }else{
+      toast.error("As you are not signed in you are not allowed to access this page")
       router.push("/")
     }
-  }else{
-    toast.error("As you are not signed in you are not allowed to access this page")
-    router.push("/")
   }
-
-
+  
   const [active,setActive]=useState('Total Users');
 
-  
 
   return (
     <div className=" w-full">
@@ -89,4 +89,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AdminPage;

@@ -6,7 +6,7 @@ import Image from 'next/image'
 import React, { useLayoutEffect, useState } from 'react'
 
 
-const page = () => {
+const ProfilePage = () => {
     // const userData=useSelector((store)=>store.userDetails) 
     const {status, data}=useSession();
     const [totalPosts,setTotalPosts]=useState([])
@@ -58,4 +58,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ProfilePage

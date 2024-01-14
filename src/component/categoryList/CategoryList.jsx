@@ -1,9 +1,10 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styles from './categoryList.module.css';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { CategoryActions } from '@/store/ThemeStore';
+import Image from 'next/image';
 
 
 const CategoryList = () => {
@@ -23,7 +24,7 @@ const CategoryList = () => {
 
   useEffect(()=>{
     getData()
-  },[dispatch])
+  },[])
 
   return (
     <div className={styles.container}>
@@ -33,7 +34,7 @@ const CategoryList = () => {
           getCategory[0]?.map((item,index)=>{
             return(
               <Link key={index} className={`${styles.category} ${styles.style}`} href={`/blog?title=${item.title}`}>
-                <img src={item.imageURL} alt='' width={32} height={32} className={styles.image} />
+                <Image src={item.imageURL} alt='' width={32} height={32} className={styles.image} />
               {item.title}
               </Link>
             )

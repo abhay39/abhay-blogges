@@ -1,12 +1,10 @@
 "use client"
-import CardList from '@/component/cardList/CardList'
 import styles from './blogPage.module.css'
-import Menu from '@/component/menu/Menu'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Card from '@/component/card/Card'
 
-const page = () => {
+const BlogPage = () => {
   const [relatedProduct, setRelatedProduct]=useState([])
   const [isLoading,setIsLoading]=useState(false);
   const search=useSearchParams();
@@ -36,7 +34,7 @@ const page = () => {
 
   useEffect(()=>{
     getrelated()
-  },[id])
+  },[])
 
   return (
     <div className={styles.container}>
@@ -84,4 +82,4 @@ const page = () => {
   )
 }
 
-export default page
+export default BlogPage
