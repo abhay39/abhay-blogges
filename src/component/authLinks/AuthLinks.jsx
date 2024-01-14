@@ -52,7 +52,7 @@ const AuthLinks = () => {
               status === "unauthenticated" ? (<button onClick={()=>{
                 router.push('/login')
                 setOpen(false)
-              }}>Contact</button>):(<>
+              }}>Login</button>):(<>
               <button onClick={()=>{
               router.push('/write')
               setOpen(false)
