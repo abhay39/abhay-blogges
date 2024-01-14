@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import Posts from "../models/Posts";
+import connectMONGO from "@/utils/connect";
 
 export const GET=async(req,res)=>{
     return NextResponse.json({
@@ -14,6 +15,7 @@ export const POST=async(req,res)=>{
     // console.log(commentBy,description,postId)
 
     try{
+        await connectMONGO();
         const data={
             commentBy:commentBy,
             description:description,

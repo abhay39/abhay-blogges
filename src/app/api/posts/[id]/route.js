@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import User from "../../models/user";
-import connectMONGO from "@/utils/connect";
+
 import Posts from "../../models/Posts";
 
 export const GET=async(req,res)=>{
@@ -13,29 +13,16 @@ export const GET=async(req,res)=>{
     return NextResponse.json(post,{status:200});;
 }
 
-export const PUT=async(req,res)=>{
-    const data=await req.json();
+export const DELETE = async (req, res) => {
     const id=res.params.id;
-    try{
-        const post=await Posts.findByIdAndUpdate(id,{
-            $push:{
-                likes:likedBy
-            }
-        });
-        if(post){
-            return NextResponse.json({
-                "message":"Post Liked Successfully"
-            },{status:200});;
-        }
-        else{
-            return NextResponse.json({
-                "message":"Error Liking Post"
-            },{status:400});;
-        }
-    }catch(err){
-        return NextResponse.json({
-            "message":err.message
-        })
+    const isDeleted=await Posts.findByIdAndDelete(id);
+    if(isDeleted){
+       return NextResponse.json({
+          "message": "Posts deleted successfully!!"
+       },{status:200});
+    }else{
+      return NextResponse.json({
+         "message": "Error deleting item"
+      },{status:500});
     }
-
 }

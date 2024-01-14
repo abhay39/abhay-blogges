@@ -6,13 +6,15 @@ await connectMONGO();
 
 
 export const GET=async()=>{
-    const posts=await Posts.find();
+    await connectMONGO();
+    const posts=await Posts.find().sort({ createdAt: -1 }).maxTimeMS(30000);
     return NextResponse.json(posts, {status:200});
 }
 
 export const POST=async(req,res)=>{
     const data= await req.json();
     // console.log(data);
+    await connectMONGO();
 
     const newPost=new Posts({
         title:data.title,

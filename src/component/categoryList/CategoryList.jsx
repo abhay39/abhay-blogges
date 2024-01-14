@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './categoryList.module.css';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { CategoryActions } from '@/store/ThemeStore';
 
@@ -26,15 +25,14 @@ const CategoryList = () => {
     getData()
   },[dispatch])
 
-
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Popular Category</h1>
+      <h1 className={styles.title}><span className=' font-bold text-2xl'>Popular Category</span></h1>
       <div className={`${styles.categories}`}>
         {
           getCategory[0]?.map((item,index)=>{
             return(
-              <Link key={index} className={`${styles.category} ${styles.style}`} href={`/blog?cat=${item.title}`}>
+              <Link key={index} className={`${styles.category} ${styles.style}`} href={`/blog?title=${item.title}`}>
                 <img src={item.imageURL} alt='' width={32} height={32} className={styles.image} />
               {item.title}
               </Link>

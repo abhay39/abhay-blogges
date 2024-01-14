@@ -1,0 +1,81 @@
+/* styles/ContactUs.module.css */
+
+.container {
+    min-height: 100vh;
+    /* display: flex; */
+    /* flex-direction: row; */
+    gap: 50px;
+  }
+  .inputBox{
+    width: 100%;
+    background-color: darkgrey;
+    border-radius: 10px;
+  }
+  
+  .main {
+    padding: 5rem;
+    text-align: left;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .contactInfo {
+    margin-bottom: 1rem;
+  }
+  
+  .address {
+    margin-bottom: 2rem;
+  }
+  
+  .connectWithUs {
+    margin-bottom: 2rem;
+  }
+  
+  .connectWithUs ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .connectWithUs li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  .connectWithUs a {
+    text-decoration: none;
+    color: #0070f3;
+  }
+
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .contactForm label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .contactForm input,
+  .contactForm textarea {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  
+  .contactForm button {
+    padding: 0.5rem;
+    background-color: #0070f3;
+    color: #ffffff;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .contactForm button:hover {
+    background-color: #0056b3;
+  }
+  

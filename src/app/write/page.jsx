@@ -25,10 +25,10 @@ const WritePage = () => {
   // console.log(getCategory[0])
 
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
-  const [title, setTitle] = useState("");
+  const [value, setValue] = useState(null);
+  const [title, setTitle] = useState(null);
   const [image, setImage] = useState(null);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(null);
   const [activeBtn,setActiveBtn] = useState(false);
   const [postUploaded,setPostUploaded] = useState(false);
 
@@ -53,7 +53,10 @@ const WritePage = () => {
   };
 
   const hanldeAddPost = async () => {
-    setPostUploaded(true);
+    if(image==null || title==null || category==null || value==null){
+      toast.error("All fields are required")
+    }else{
+      setPostUploaded(true);
     const data = {
       title: title,
       image: image,
@@ -74,22 +77,24 @@ const WritePage = () => {
     const resData = await res.json();
     console.log(resData);
     if (status==200) {
-
-      toast.success(resData.message)
       setValue("");
       setTitle("");
       setImage("");
       setOpen(false);
       setTimeout(()=>{
+        toast.success(resData.message)
         setPostUploaded(false);
         route.push("/");
       },3000)
     }else{
       toast.error(resData.message)
     }
+    }
   };
 
   const theme = useSelector(store => store.themeChanger);
+
+  const isDisable= !title || !value || !image || !category;
 
   return (
     <div className={styles.container}>
@@ -99,6 +104,7 @@ const WritePage = () => {
         placeholder="Title"
         className={styles.input}
       />
+      <br />
       <label htmlFor="">Choose Category: </label>
       <select
         value={category}
@@ -151,15 +157,15 @@ const WritePage = () => {
               />
             </button>
           </div>}
+      </div>
         <ReactQuill
           className={styles.textarea}
-          theme="bubble"
+          theme="snow"
           value={value}
           onChange={setValue}
           placeholder="Tell your story..."
         />
-      </div>
-      <button onClick={hanldeAddPost} className={styles.publish}>
+      <button disabled={isDisable} onClick={hanldeAddPost} className={` w-full p-3 rounded-xl mt-3 ${isDisable?"bg-gray-100":"bg-green-600"}`}>
         Publish
       </button>
 

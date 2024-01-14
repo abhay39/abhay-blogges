@@ -1,33 +1,80 @@
 "use client"
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import style from './featured.module.css';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
 import { useSelector } from 'react-redux';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Carousel } from 'react-responsive-carousel';
 
 const Featured = () => {
 
   const userData=useSelector((store)=>store.userDetails)
+  
+
+  const [totalPosts,setTotalPosts]=useState([])
+
+  const DemoCarousel = () => {
+    return (
+      <Carousel autoPlay infiniteLoop showThumbs={false}> 
+            <div> 
+                <img  src={totalPosts[0]?.imageURL}  alt="image1"/> 
+                <p className={`${style.postTitle} legend`}>{totalPosts[0]?.title}</p> 
+
+            </div> 
+            <div> 
+                <img src={totalPosts[1]?.imageURL}   alt="image1"/> 
+                <p className={`${style.postTitle} legend`}>{totalPosts[1]?.title}</p> 
+
+            </div> 
+            <div> 
+                <img src={totalPosts[2]?.imageURL}  alt="image1"/> 
+                <p className={`${style.postTitle} legend`}>{totalPosts[2]?.title}</p> 
+            </div> 
+        </Carousel> 
+    );
+  };
+  
+
+  useLayoutEffect(()=>{
+    const abortController=new AbortController();
+    const {signal}=abortController;
+
+    const getTotalPosts=async()=>{
+      let res=await fetch("/api/posts",{signal});
+      res= await res.json();
+      setTotalPosts(res);
+    }
+    getTotalPosts();
+
+    return()=>{
+      abortController.abort();
+    }
+
+  },[])
 
 
   return (
     <div className={style.container}>
       {
         userData.details && (
-          <h1 className={style.title}>Hey,<b> {userData?.details?.name}</b> here! Discover my stories and creative ideas.</h1>
+          <h1 className={style.title}>Hey,<span className=' font-bold'> {userData?.details?.name}</span> here! Discover your stories and creative ideas.</h1>
         )
       }
-      <div className={style.post}>
+
+          <div>
+            <DemoCarousel />
+          </div>
+
+      {/* <div className={style.post}>
         <div className={style.imageContainer}>
-          <Image className={style.image} src={require('./user.jpg')} alt='pic' fill/>
+          <Image className={style.image} src={totalPosts[0]?.imageURL} alt='pic' fill/>
         </div>
         <div className={style.textContainer}>
-          <h1 className={style.postTitle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. </h1>
-          <p className={style.postDescription}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, accusamus ad? Repellendus, voluptas. Sequi reiciendis facere excepturi eum architecto, quos soluta in inventore a rerum alias tempora ullam nobis repellat!
-          Dolores iusto, earum exercitationem culpa et necessitatibus excepturi saepe veniam sed dolorum doloremque natus tenetur praesentium eaque ipsam perferendis voluptatem officiis, voluptate illum fugiat! Eum quasi minima nesciunt qui iste?</p>
+          <h1 className={style.postTitle}>{totalPosts[0]?.title} </h1>
+          <p className={style.postDescription} dangerouslySetInnerHTML={{ __html: totalPosts[0]?.description.slice(0,100) }} />
           <button className={style.button}>Read More</button>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

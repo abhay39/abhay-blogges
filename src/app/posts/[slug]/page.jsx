@@ -3,13 +3,9 @@ import Menu from "@/component/menu/Menu";
 import style from "./singlePage.module.css";
 import Image from "next/image";
 import Comment from "@/component/comment/Comment";
-import { useRouter } from 'next/navigation';
+
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { AiFillLike,AiFillDislike } from "react-icons/ai";
-import { BiComment } from "react-icons/bi";
-import { IoMdShare } from "react-icons/io";
-import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import {
   FacebookShareButton,
@@ -19,11 +15,11 @@ import {
   TwitterShareButton,
   TwitterIcon,
 } from 'next-share'
+import { useRouter } from "next/navigation";
 
 
 const SinglePage = (slug) => {
   
-  const userData=useSelector((store)=>store.userDetails)
   const {data,status}=useSession()
   const urlll= window.location.href;
   
@@ -35,6 +31,7 @@ const SinglePage = (slug) => {
   const [isLoading,setIsLoading]=useState(false);
   
   
+  const route=useRouter();
 
   useEffect(()=>{
     const abortController=new AbortController();
@@ -59,8 +56,29 @@ const SinglePage = (slug) => {
   },[id])
 
 
+  function calculateTimeToRead(content) {
+    // Check if content is a valid string
+    if (typeof content !== 'string') {
+        console.error('Invalid content. Please provide a valid string.');
+        return 0; // Return 0 minutes for invalid content
+    }
+
+    // Assuming an average reading speed of 200 words per minute
+    const wordsPerMinute = 100;
+
+    // Count the number of words in the content
+    const wordCount = content.split(/\s+/).length;
+
+    // Calculate the time to read in minutes
+    const timeToReadMinutes = Math.ceil(wordCount / wordsPerMinute);
+
+    return timeToReadMinutes;
+}
 
 
+
+
+  const timeToRead = calculateTimeToRead(post?.description);
 
   return (
     <div className={style.container}>
@@ -78,7 +96,9 @@ const SinglePage = (slug) => {
               <Image src="/p1.jpeg" alt="" fill className={style.avatar} />
             </div>
             <div className={style.userTextContaier}>
-              <span className={style.username}>{post?.author}</span>
+              <span onClick={()=>{
+
+              }} className={`${style.username} cursor-pointer font-semibold`}>{post?.author}</span>
               <span className={style.date}>{post?.createdAt?.slice(0,10)}</span>
             </div>
           </div>
@@ -97,6 +117,7 @@ const SinglePage = (slug) => {
             </div>
             <div>
               <p>Total Views : {post?.views}</p>
+              <p>Time to read this blog : {timeToRead} mins</p>
             </div>
 
             

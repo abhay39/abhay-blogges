@@ -3,19 +3,16 @@ import styles from "./card.module.css";
 import Link from "next/link";
 
 const Card = ({item}) => {
-  
-
-
 
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <Image src={item?.imageURL} alt="" fill  className={styles.image}/>
+        <Image src={item?.imageURL} alt="" height={350} width={350}  className={styles.image}/>
       </div>
       <div className={styles.textContainer}>
         <div className={styles.details}>
-          <span className={styles.date}>{item.createdAt.slice(0,10)} - </span>
-          <span className={styles.category}>{item.category.toUpperCase()}</span>
+          <span  className={styles.date}>{item.createdAt.slice(0,10)} - </span>
+          <Link href={`/blog?title=${item?.category}`} className={styles.category}>{item.category.toUpperCase()}</Link>
         </div>
 
         <Link href={`/posts/${item?._id}`}>
@@ -26,7 +23,7 @@ const Card = ({item}) => {
 
         <p className={styles.desc} dangerouslySetInnerHTML={{ __html: item?.description?.substring(0,200) }} />
 
-        <Link href={`/posts/${item?._id}`}>Read More</Link>
+        <Link href={`/posts/${item?._id}` } className={styles.readMore}>Read More</Link>
       </div>
     </div>
   );

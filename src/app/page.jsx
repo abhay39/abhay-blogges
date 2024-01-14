@@ -7,10 +7,11 @@ import CategoryList from '@/component/categoryList/CategoryList';
 import { useSession } from 'next-auth/react';
 import { useDispatch } from 'react-redux';
 import { UserDetailsActions } from '@/store/ThemeStore';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home({searchParams}) {
   const page = parseInt(searchParams.page) || 1;
+  const [isLoading,setIsLoading] = useState(true);
 
   const {data}=useSession();
   const dispatch=useDispatch();
@@ -19,15 +20,28 @@ export default function Home({searchParams}) {
     dispatch(UserDetailsActions.addDetails(data));
   })
 
+  setTimeout(()=>{
+    setIsLoading(false);
+  },2000)
+
 
   return (
     <div className={style.containers}>
-        <Featured />
-        <CategoryList />
-      <div className={style.content}>
-        <CardList page={page}/>
-        <Menu />
-      </div>
+        {
+          isLoading?(<div className={style.loader}>
+            <div className={style.customLoader}></div>
+              <h1>Loading</h1>
+        </div>):(
+            <>
+              <Featured />
+              <CategoryList />
+              <div className={style.content}>
+                <CardList page={page}/>
+                <Menu />
+              </div>
+            </>
+          )
+        }
     </div>
   )
 }

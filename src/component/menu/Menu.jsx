@@ -1,13 +1,15 @@
+
 import styles from './menu.module.css';
 import MenuPost from '../menuPost/MenuPost';
 import MenuCategories from '../menuCategories/MenuCategories';
 
 const Menu = () => {
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.subtitle}>{"What's hot"}</h2>
+      {/* <h2 className={styles.subtitle}>{"What's hot"}</h2> */}
       <h1 className={styles.title}>Most Popular</h1>
-      <MenuPost withImage={false} />
+      {/* <MenuPost withImage={true} /> */}
 
 
 
@@ -19,10 +21,10 @@ const Menu = () => {
       <MenuCategories />
 
       {/* third part */}
-
+{/* 
       <h2 className={styles.subtitle}>Choosen by editors</h2>
       <h1 className={styles.title}>Editor Picks</h1>
-      <MenuPost withImage={true} />
+      <MenuPost withImage={true} /> */}
 
     </div>
   )

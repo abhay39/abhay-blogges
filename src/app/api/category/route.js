@@ -6,7 +6,7 @@ import Category from "../models/Category";
 
 export const GET=async()=>{
     await connectMONGO();
-    const category=await Category.find();
+    const category=await Category.find().maxTimeMS(30000);;
     return NextResponse.json(category,{status:202})
 }
 
@@ -31,3 +31,4 @@ export const POST=async(req,res)=>{
         },{status:500});
     }
 }
+

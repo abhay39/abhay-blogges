@@ -1,4 +1,4 @@
-import { Inter, Poppins } from "next/font/google";
+import { Caladea, Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/navbar/Navbar";
 import Footer from "@/component/footer/Footer";
@@ -7,10 +7,10 @@ import ThemeProviders from "@/component/themeToogle/ThemeProviders";
 import AuthProviders from "@/providers/AuthProviders";
 import { Toaster } from "react-hot-toast";
 
-const inter = Poppins({ subsets: ["latin"],weight:['400','500','600'] });
+const inter = Poppins({weight:['400','500','600'],subsets:['latin-ext'] });
 
 export const metadata = {
-  title: "Blog Application",
+  title: "YOURVIEW",
   description: "This is a blog app"
 };
 

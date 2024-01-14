@@ -1,0 +1,34 @@
+/* styles/AboutUs.module.css */
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main {
+    padding: 5rem;
+    text-align: justify;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .aboutContent {
+    margin-bottom: 2rem;
+  }
+  
+  .ceoInfo {
+    margin-top: 2rem;
+  }
+  
+  .ceoInfo h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  

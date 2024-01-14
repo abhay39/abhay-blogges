@@ -1,4 +1,5 @@
 import GoogleProvider from 'next-auth/providers/google';
+import FacebookProvider from 'next-auth/providers/facebook';
 import Github from "next-auth/providers/github";
 import connectMONGO from './connect';
 import User from '@/app/api/models/user.js';
@@ -13,8 +14,7 @@ export const authOptions = {
         Github({
             clientId:process.env.GITHUB_CLIENT_ID,
             clientSecret:process.env.GITHUB_CLIENT_SECRET,
-    
-        })
+        }),
       ],
       callbacks:{
         async session({session}){

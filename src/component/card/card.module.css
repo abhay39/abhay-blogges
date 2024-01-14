@@ -1,6 +1,7 @@
 .container{
     margin-bottom: 50px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 50px;
 }
@@ -14,6 +15,13 @@
     font-weight: 600;
     text-align: justify;
 }
+.readMore{
+    background-color: green;
+    width: max-content;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
 .textContainer{
     flex: 1;
     display: flex;
@@ -22,6 +30,8 @@
 }
 .image{
     object-fit: cover;
+    height: 300px;
+    width: 100%;
     border-radius: 10px;
 }
 
@@ -45,8 +55,17 @@
     padding: 2px 0px;
 }
 
-@media screen and (max-width: 1280px) {
-    .imageContainer{
-        display: none;
+@media screen and (max-width: 640px) {
+    .container {
+        flex-direction: column;
+    }
+    .imageContainer {
+        flex: none; /* Remove the flex property for better control */
+        width: 100%; /* Ensure the container takes full width */
+        height: auto;
+    }
+    .image {
+        width: 100%;
+        height: auto; /* Allow the image to adjust its height */
     }
 }
