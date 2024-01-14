@@ -6,28 +6,29 @@ import StoreProvider from "@/StoreProvider";
 import ThemeProviders from "@/component/themeToogle/ThemeProviders";
 import AuthProviders from "@/providers/AuthProviders";
 import { Toaster } from "react-hot-toast";
-import Head from "next/head"
+import Head from "next/head";
 
-
-const inter = Poppins({weight:['400','500','600'],subsets:['latin-ext'] });
+const inter = Poppins({ weight: ['400', '500', '600'], subsets: ['latin-ext'] });
 
 export const metadata = {
   title: "YOURVIEW",
-  description: "This is a blog app"
+  description: "This is a blog app",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-    <Head>
-    <meta name="google-adsense-account" content="ca-pub-2244249864037808">
-       </Head>
+    <>
+      <Head>
+        <meta name="google-adsense-account" content="ca-pub-2244249864037808" />
+        {/* Add other meta tags, links, etc., as needed */}
+      </Head>
+
       <body className={inter.className}>
-          <AuthProviders>
+        <AuthProviders>
           <StoreProvider>
             <ThemeProviders>
               <div className="mainContainer">
-              <Toaster position="top-center " />
+                <Toaster position="top-center " />
                 <div className="wrapper">
                   <Navbar />
                   {children}
@@ -36,8 +37,8 @@ export default function RootLayout({ children }) {
               </div>
             </ThemeProviders>
           </StoreProvider>
-          </AuthProviders>
+        </AuthProviders>
       </body>
-    </html>
+    </>
   );
 }
