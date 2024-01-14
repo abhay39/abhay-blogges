@@ -6,6 +6,8 @@ import StoreProvider from "@/StoreProvider";
 import ThemeProviders from "@/component/themeToogle/ThemeProviders";
 import AuthProviders from "@/providers/AuthProviders";
 import { Toaster } from "react-hot-toast";
+import Head from "next/head"
+
 
 const inter = Poppins({weight:['400','500','600'],subsets:['latin-ext'] });
 
@@ -17,6 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+    <Head>
+    <meta name="google-adsense-account" content="ca-pub-2244249864037808">
+       </Head>
       <body className={inter.className}>
           <AuthProviders>
           <StoreProvider>
